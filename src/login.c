@@ -110,7 +110,7 @@ int http_udp_upload_login(const char *addr_rem, char *s, char **username, const 
 			
 			given_passcode = atoi(argv[i]);
 			if (given_passcode >= 0)
-				if ((given_passcode == aprs_passcode(*username)) || (given_passcode == aprs_passcode_la(*username)))
+				if (given_passcode == aprs_passcode(*username))
 					validated = 1;
 		} else if (strcasecmp(argv[i], "vers") == 0) {
 			if (i+2 >= argc) {
@@ -320,7 +320,7 @@ int login_handler(struct worker_t *self, struct client_t *c, int l4proto, char *
 			if (!ssl_validated) {
 				given_passcode = atoi(argv[i]);
 				if (given_passcode >= 0)
-					if ((given_passcode == aprs_passcode(*username)) || (given_passcode == aprs_passcode_la(*username)))
+					if (given_passcode == aprs_passcode(c->username))
 						c->validated = VALIDATED_WEAK;
 			}
 		} else if (strcasecmp(argv[i], "vers") == 0) {

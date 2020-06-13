@@ -12,6 +12,6 @@
 #define PASSCODE_H
 
 extern short aprs_passcode(const char* theCall);
-extern short aprs_passcode_la(const char* theCall);
+
 #endif
 
